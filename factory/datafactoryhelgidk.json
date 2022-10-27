@@ -1,0 +1,9 @@
+{
+	"name": "datafactoryhelgidk",
+	"location": "northeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "eda426a1-08eb-4dff-aa1c-b359970d0481",
+		"tenantId": "f2bde774-1d70-4a41-a15b-f9ece44b42f0"
+	}
+}
