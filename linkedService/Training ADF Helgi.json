@@ -1,0 +1,10 @@
+{
+	"name": "Training ADF Helgi",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://traininghelgidk.dfs.core.windows.net/"
+		}
+	}
+}
