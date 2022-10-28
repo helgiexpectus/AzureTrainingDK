@@ -1,0 +1,17 @@
+{
+	"name": "DataSetListAW",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GitHTTPDataSource",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation"
+			}
+		},
+		"schema": {}
+	}
+}
