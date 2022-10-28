@@ -1,8 +1,8 @@
 {
-	"name": "HTTP_BIN_AdventureWorks",
+	"name": "ADLS_BIN_AdventureWorks",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "HTTP_AWGitHub",
+			"referenceName": "Training ADF Helgi",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
@@ -14,11 +14,13 @@
 		"type": "Binary",
 		"typeProperties": {
 			"location": {
-				"type": "HttpServerLocation",
-				"relativeUrl": {
-					"value": "@{dataset().Entity}.csv",
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@{dataset().Entity}.tsv",
 					"type": "Expression"
-				}
+				},
+				"folderPath": "Raw",
+				"fileSystem": "lakerott"
 			}
 		}
 	}
