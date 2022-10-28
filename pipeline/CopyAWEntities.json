@@ -8,6 +8,10 @@
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
+					"items": {
+						"value": "@variables('Entities')",
+						"type": "Expression"
+					},
 					"activities": [
 						{
 							"name": "Execute Copy AW Entity",
