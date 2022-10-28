@@ -13,6 +13,11 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
+				"userProperties": [
+					{
+						"name": "FileName"
+					}
+				],
 				"typeProperties": {
 					"source": {
 						"type": "JsonSource",
@@ -27,7 +32,8 @@
 					"dataset": {
 						"referenceName": "DataSetListAW",
 						"type": "DatasetReference"
-					}
+					},
+					"firstRowOnly": false
 				}
 			},
 			{
@@ -43,6 +49,10 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
+					"items": {
+						"value": "@activity('GetDatasetList').output",
+						"type": "Expression"
+					},
 					"activities": [
 						{
 							"name": "Copy data1",
@@ -60,19 +70,43 @@
 								"source": {
 									"type": "BinarySource",
 									"storeSettings": {
-										"type": "AzureBlobFSReadSettings",
-										"recursive": true
+										"type": "HttpReadSettings",
+										"requestMethod": "GET"
 									},
 									"formatSettings": {
 										"type": "BinaryReadSettings"
+									}
+								},
+								"sink": {
+									"type": "BinarySink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
 									}
 								},
 								"enableStaging": false
 							},
 							"inputs": [
 								{
+									"referenceName": "HTTP_BIN_AdventureWorks",
+									"type": "DatasetReference",
+									"parameters": {
+										"Entity": {
+											"value": "@item()",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
 									"referenceName": "ADLS_BIN_AdventureWorks",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"Entity": {
+											"value": "@item()",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						}
