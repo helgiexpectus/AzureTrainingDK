@@ -33,9 +33,9 @@
 			"Entities": {
 				"type": "Array",
 				"defaultValue": [
-					"{\"Product\"",
+					"Product",
 					"ProductSubcategory",
-					"\"ProductCategory\"}"
+					"ProductCategory"
 				]
 			}
 		},
