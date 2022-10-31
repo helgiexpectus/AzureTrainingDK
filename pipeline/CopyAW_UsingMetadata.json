@@ -20,7 +20,7 @@
 				}
 			},
 			{
-				"name": "Set variable1",
+				"name": "ConvertToJSON",
 				"type": "SetVariable",
 				"dependsOn": [
 					{
@@ -34,7 +34,7 @@
 				"typeProperties": {
 					"variableName": "FileName",
 					"value": {
-						"value": "@activity('GetMetaData').output",
+						"value": "@json(activity('GetMetaData').attribute)",
 						"type": "Expression"
 					}
 				}
