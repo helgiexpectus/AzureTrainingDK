@@ -5,14 +5,7 @@
 			{
 				"name": "For each file",
 				"type": "ForEach",
-				"dependsOn": [
-					{
-						"activity": "MetaDataLookup",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
@@ -80,8 +73,8 @@
 				}
 			},
 			{
-				"name": "MetaDataLookup",
-				"type": "Lookup",
+				"name": "GetMetaData",
+				"type": "WebActivity",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -92,19 +85,27 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"source": {
-						"type": "JsonSource",
-						"storeSettings": {
-							"type": "HttpReadSettings",
-							"requestMethod": "GET"
-						},
-						"formatSettings": {
-							"type": "JsonReadSettings"
-						}
-					},
-					"dataset": {
-						"referenceName": "DataSetListAW",
-						"type": "DatasetReference"
+					"url": "https://bit.ly/3TrPRfd",
+					"method": "GET"
+				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "GetMetaData",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "FileName",
+					"value": {
+						"value": "@activity('GetMetaData').output",
+						"type": "Expression"
 					}
 				}
 			}
