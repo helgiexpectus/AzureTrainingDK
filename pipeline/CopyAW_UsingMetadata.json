@@ -34,7 +34,7 @@
 				"typeProperties": {
 					"variableName": "FileName",
 					"value": {
-						"value": "@activity('GetMetaData').output",
+						"value": "@json(activity('GetMetaData').output.Response)",
 						"type": "Expression"
 					}
 				}
